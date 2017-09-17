@@ -20,9 +20,13 @@ D1 <- tidyr::unite(D1, Name, Last.name, First.name, sep = " ", remove = TRUE)
 
 #Reshape data to create a "course" variable (you will get a warning because there are missing cells)
 D2 <- tidyr::gather(D1, course.label, course, Course1, Course2, Course3, Course4, Course5, na.rm = TRUE, convert = FALSE)
+#or 
+#D_long <- tidyr::gather(D1, CourseNo., "course", 2:6)
 
 #Remove the "course.label" variable
 D2 <- dplyr::select(D2, Name, course)
+#or
+#D2 <- D_long[c(1,3)]
 
 #Remove rows indicating HUDK4050 because all students are in this course and it will overwhelm the graph
 D2 <- dplyr::filter(D2, course > 0, course != "HUDK4050")
@@ -43,9 +47,9 @@ D3 <- ifelse(is.na(D3), 0, 1)
 D4 <- as.matrix(D3)
 
 #Transpose matrix to produce a person x person matrix
-D5 <- D4 %*% t(D4)
-diag(D5) <- NA
-
+D5 <- D4 %*% t(D4) #to get the number of courses these people are doing together
+diag(D5) <- NA #to remove the diagnal - the number of courses a person is doing with self. Redundant
+#Transpose. The transpose of a matrix is a new matrix whose rows are the columns of the original. (This makes the columns of the new matrix the rows of the original)
 ```
 #Graphing
 ```{r}
