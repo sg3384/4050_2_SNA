@@ -1,8 +1,9 @@
 ---
 title: "Assignment 2 - Social Network Analysis Solution"
 output: html_document
+author: Shreya Goel
 ---
-#Libraries
+# Libraries
 ```{r}
 library(tidyr)
 library(dplyr)
@@ -10,7 +11,7 @@ library(igraph)
 ```
 
 
-#Data Wrangling
+# Data Wrangling
 ```{r}
 #Read data into
 D1 <- read.csv("hudk4050-classes.csv", header = TRUE)
