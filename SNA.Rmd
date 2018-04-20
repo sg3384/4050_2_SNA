@@ -52,21 +52,19 @@ D5 <- D4 %*% t(D4) #to get the number of courses these people are doing together
 diag(D5) <- NA #to remove the diagnal - the number of courses a person is doing with self. Redundant
 #Transpose. The transpose of a matrix is a new matrix whose rows are the columns of the original. (This makes the columns of the new matrix the rows of the original)
 ```
-#Graphing
+# Graphing
 ```{r}
 g <- graph.adjacency(D5,mode="undirected")
 
 plot(g,layout=layout.fruchterman.reingold, vertex.size=6)
 
 ```
-#Centrality
+# Centrality
 ```{r}
 #Calculate the degree centrality of the nodes, showing who has the most connections
 degree(g)
 
 #Calculate the betweeness centrality, showing how many "shortest paths" pass through each node. This turns out to be uniformative for this graph as there are a bunch of people who are almost equally connected and a bunch of people who are unconnected.
 betweenness(g)
-
-
 ```
 
