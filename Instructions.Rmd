@@ -1,4 +1,6 @@
-# Assignment 2 - Social Network Analysis
+# Social Network Analysis
+
+Assignment files as given.
 
 ## Part I
 Start by installing the "igraph" package. Once you have installed igraph, load the package.
